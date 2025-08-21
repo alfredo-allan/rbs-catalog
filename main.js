@@ -21,7 +21,7 @@ let pdfDoc = null,
 
 document.addEventListener('DOMContentLoaded', () => {
     initializeApp();
-    loadPDF('RBS-2025.pdf');
+    loadPDF('/RBS-2025.pdf');
 });
 
 // ============================

@@ -1,8 +1,10 @@
 .
 ├── estrutura.txt
+├── favicon.png
 ├── index.html
 ├── main.js
 ├── RBS-2025.pdf
-└── styles.css
+├── styles.css
+└── vercel.json
 
-1 directory, 5 files
+1 directory, 7 files
