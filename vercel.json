@@ -4,9 +4,41 @@
         {
             "src": "index.html",
             "use": "@vercel/static"
+        },
+        {
+            "src": "styles.css",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "main.js",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "RBS-2025.pdf",
+            "use": "@vercel/static"
+        },
+        {
+            "src": "favicon.png",
+            "use": "@vercel/static"
         }
     ],
     "routes": [
+        {
+            "src": "/styles.css",
+            "dest": "/styles.css"
+        },
+        {
+            "src": "/main.js",
+            "dest": "/main.js"
+        },
+        {
+            "src": "/RBS-2025.pdf",
+            "dest": "/RBS-2025.pdf"
+        },
+        {
+            "src": "/favicon.png",
+            "dest": "/favicon.png"
+        },
         {
             "src": "/(.*)",
             "dest": "/index.html"
