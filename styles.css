@@ -1,361 +1,411 @@
-        /* Reset e Base */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+/* Reset e Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        :root {
-            --primary-font: 'Oswald', sans-serif;
-            --title-font: 'Bebas Neue', sans-serif;
-            --bg-color: #f8f9fa;
-            --card-bg: #ffffff;
-            --text-color: #2c3e50;
-            --accent-color: #25D366;
-            --cart-color: #343a40;
-            --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
-        }
+:root {
+    --primary-font: 'Oswald', sans-serif;
+    --title-font: 'Bebas Neue', sans-serif;
+    --bg-color: #f8f9fa;
+    --card-bg: #ffffff;
+    --text-color: #2c3e50;
+    --accent-color: #25D366;
+    --cart-color: #343a40;
+    --shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
 
-        body {
-            font-family: var(--primary-font);
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            min-height: 100vh;
-        }
+body {
+    font-family: var(--primary-font);
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+    min-height: 100vh;
+}
 
-        /* Header */
-        .header {
-            background: var(--card-bg);
-            padding: 2rem 1rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
+/* Header */
+.header {
+    background: var(--card-bg);
+    padding: 2rem 1rem;
+    text-align: center;
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
 
-        .header h1 {
-            font-family: var(--title-font);
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-            color: var(--text-color);
-            font-weight: 400;
-            letter-spacing: 2px;
-        }
+.header h1 {
+    font-family: var(--title-font);
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+    font-weight: 400;
+    letter-spacing: 2px;
+}
 
-        .header p {
-            color: #666;
-            font-size: 1.1rem;
-            font-weight: 300;
-        }
+.header p {
+    color: #666;
+    font-size: 1.1rem;
+    font-weight: 300;
+}
 
-        /* Main Content */
-        .main-content {
-            padding: 1rem;
-            max-width: 100%;
-            margin: 0 auto;
-            height: calc(100vh - 140px);
-        }
+/* Main Content */
+.main-content {
+    padding: 1rem;
+    max-width: 100%;
+    margin: 0 auto;
+    height: calc(100vh - 140px);
+}
 
-        .pdf-container {
-            background: var(--card-bg);
-            border-radius: 10px;
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            height: 100%;
-            width: 100%;
-        }
+/* PDF Viewer Container (para PDF.js) */
+.pdf-container {
+    background: var(--card-bg);
+    border-radius: 10px;
+    box-shadow: var(--shadow);
+    overflow: auto;
+    height: 100%;
+    width: 100%;
+    position: relative;
+}
 
-        .pdf-container embed {
-            width: 100%;
-            height: 100%;
-            border: none;
-            display: block;
-        }
+/* Canvas do PDF.js */
+.pdf-canvas {
+    display: block;
+    margin: 0 auto 20px auto;
+    max-width: 100%;
+    height: auto;
+    border-bottom: 1px solid #eee;
+}
 
-        .pdf-placeholder {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100%;
-            color: #666;
-            background: #f8f9fa;
-        }
+/* Placeholder antes de carregar o PDF */
+.pdf-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    color: #666;
+    background: #f8f9fa;
+}
 
-        .pdf-placeholder i {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            color: #dc3545;
-        }
+.pdf-placeholder i {
+    font-size: 4rem;
+    margin-bottom: 1rem;
+    color: #dc3545;
+}
 
-        .pdf-placeholder p {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
+.pdf-placeholder p {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
 
-        .pdf-placeholder small {
-            color: #999;
-            font-style: italic;
-        }
+.pdf-placeholder small {
+    color: #999;
+    font-style: italic;
+}
 
-        /* Botão WhatsApp Flutuante */
-        .whatsapp-buttons {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 1000;
-        }
+/* Botão WhatsApp Flutuante */
+.whatsapp-buttons {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+    z-index: 1000;
+}
 
-        .whatsapp-btn {
-            background: var(--accent-color);
-            color: white;
-            border: none;
-            border-radius: 50%;
-            padding: 18px;
-            font-size: 1.5rem;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 60px;
-            height: 60px;
-        }
+.whatsapp-btn {
+    background: var(--accent-color);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    padding: 18px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+}
 
-        .whatsapp-btn:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
-        }
+.whatsapp-btn:hover {
+    transform: translateY(-3px) scale(1.1);
+    box-shadow: 0 8px 25px rgba(37, 211, 102, 0.6);
+}
 
-        /* Caixa de Pedidos */
-        .pedidos-box {
-            position: fixed;
-            left: 20px;
-            bottom: 20px;
-            background: var(--cart-color);
-            color: white;
-            padding: 15px 20px;
-            border-radius: 50px;
-            cursor: pointer;
-            box-shadow: 0 6px 20px rgba(52, 58, 64, 0.4);
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            z-index: 1000;
-            font-weight: 500;
-        }
+/* Caixa de Pedidos */
+.pedidos-box {
+    position: fixed;
+    left: 20px;
+    bottom: 20px;
+    background: var(--cart-color);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 6px 20px rgba(52, 58, 64, 0.4);
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 1000;
+    font-weight: 500;
+}
 
-        .pedidos-box:hover {
-            transform: translateY(-3px) scale(1.05);
-            box-shadow: 0 8px 25px rgba(52, 58, 64, 0.6);
-        }
+.pedidos-box:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 25px rgba(52, 58, 64, 0.6);
+}
 
-        .pedidos-count {
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 50%;
-            padding: 4px 8px;
-            font-size: 0.8rem;
-            min-width: 25px;
-            min-height: 25px;
-            text-align: center;
-            backdrop-filter: blur(10px);
-        }
+.pedidos-count {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    padding: 4px 8px;
+    font-size: 0.8rem;
+    min-width: 25px;
+    min-height: 25px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
 
-        /* Pop-up de Pedidos */
-        .pedidos-popup {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 2000;
-            display: none;
-        }
+/* Pop-up de Pedidos */
+.pedidos-popup {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2000;
+    display: none;
+}
 
-        .pedidos-popup.active {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.pedidos-popup.active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .popup-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(5px);
-        }
+.popup-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+}
 
-        .popup-content {
-            background: var(--card-bg);
-            border-radius: 20px;
-            width: 90%;
-            max-width: 500px;
-            max-height: 90vh;
-            overflow: hidden;
-            position: relative;
-            z-index: 2001;
-            animation: slideUp 0.3s ease;
-            box-shadow: var(--shadow);
-        }
+.popup-content {
+    background: var(--card-bg);
+    border-radius: 20px;
+    width: 90%;
+    max-width: 500px;
+    max-height: 90vh;
+    overflow: hidden;
+    position: relative;
+    z-index: 2001;
+    animation: slideUp 0.3s ease;
+    box-shadow: var(--shadow);
+}
 
-        @keyframes slideUp {
-            from {
-                transform: translateY(100px);
-                opacity: 0;
-            }
+@keyframes slideUp {
+    from {
+        transform: translateY(100px);
+        opacity: 0;
+    }
 
-            to {
-                transform: translateY(0);
-                opacity: 1;
-            }
-        }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
 
-        .popup-header {
-            padding: 1.5rem;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background: #f8f9fa;
-        }
+.popup-header {
+    padding: 1.5rem;
+    border-bottom: 1px solid #eee;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f8f9fa;
+}
 
-        .popup-header h3 {
-            color: var(--text-color);
-            font-size: 1.3rem;
-            font-family: var(--title-font);
-            letter-spacing: 1px;
-        }
+.popup-header h3 {
+    color: var(--text-color);
+    font-size: 1.3rem;
+    font-family: var(--title-font);
+    letter-spacing: 1px;
+}
 
-        .close-btn {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            cursor: pointer;
-            color: #666;
-            transition: color 0.3s;
-        }
+.close-btn {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: #666;
+    transition: color 0.3s;
+}
 
-        .close-btn:hover {
-            color: var(--cart-color);
-        }
+.close-btn:hover {
+    color: var(--cart-color);
+}
 
-        .popup-body {
-            padding: 1.5rem;
-        }
+.popup-body {
+    padding: 1.5rem;
+}
 
-        #pedidosText {
-            width: 100%;
-            border: 2px solid #eee;
-            border-radius: 10px;
-            padding: 15px;
-            font-family: inherit;
-            font-size: 1rem;
-            resize: vertical;
-            min-height: 200px;
-            transition: border-color 0.3s;
-        }
+#pedidosText {
+    width: 100%;
+    border: 2px solid #eee;
+    border-radius: 10px;
+    padding: 15px;
+    font-family: inherit;
+    font-size: 1rem;
+    resize: vertical;
+    min-height: 200px;
+    transition: border-color 0.3s;
+}
 
-        #pedidosText:focus {
-            outline: none;
-            border-color: var(--cart-color);
-        }
+#pedidosText:focus {
+    outline: none;
+    border-color: var(--cart-color);
+}
 
-        .popup-actions {
-            display: flex;
-            gap: 15px;
-            margin-top: 1.5rem;
-        }
+.popup-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 1.5rem;
+}
 
-        .popup-actions button {
-            flex: 1;
-            padding: 12px;
-            border: none;
-            border-radius: 10px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 8px;
-        }
+.popup-actions button {
+    flex: 1;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
 
-        .btn-clear {
-            background: #f8f9fa;
-            color: #666;
-            border: 2px solid #eee;
-        }
+.btn-clear {
+    background: #f8f9fa;
+    color: #666;
+    border: 2px solid #eee;
+}
 
-        .btn-clear:hover {
-            background: var(--cart-color);
-            color: white;
-            border-color: var(--cart-color);
-        }
+.btn-clear:hover {
+    background: var(--cart-color);
+    color: white;
+    border-color: var(--cart-color);
+}
 
-        .btn-enviar {
-            background: var(--accent-color);
-            color: white;
-        }
+.btn-enviar {
+    background: var(--accent-color);
+    color: white;
+}
 
-        .btn-enviar:hover {
-            background: #20b358;
-            transform: translateY(-2px);
-        }
+.btn-enviar:hover {
+    background: #20b358;
+    transform: translateY(-2px);
+}
 
-        /* Responsividade */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 2rem;
-            }
+/* Responsividade */
+@media (max-width: 768px) {
+    .header h1 {
+        font-size: 2rem;
+    }
 
-            .header p {
-                font-size: 1rem;
-            }
+    .header p {
+        font-size: 1rem;
+    }
 
-            .main-content {
-                padding: 1rem 0.5rem;
-            }
+    .main-content {
+        padding: 1rem 0.5rem;
+    }
 
-            .whatsapp-buttons {
-                right: 15px;
-                bottom: 15px;
-            }
+    .whatsapp-buttons {
+        right: 15px;
+        bottom: 15px;
+    }
 
-            .pedidos-box {
-                left: 15px;
-                bottom: 15px;
-                padding: 12px 16px;
-            }
+    .pedidos-box {
+        left: 15px;
+        bottom: 15px;
+        padding: 12px 16px;
+    }
 
-            .whatsapp-secondary span {
-                display: none;
-            }
+    .whatsapp-secondary span {
+        display: none;
+    }
 
-            .popup-content {
-                width: 95%;
-                margin: 10px;
-            }
+    .popup-content {
+        width: 95%;
+        margin: 10px;
+    }
 
-            .popup-actions {
-                flex-direction: column;
-            }
-        }
+    .popup-actions {
+        flex-direction: column;
+    }
+}
 
-        @media (max-width: 480px) {
-            .pedidos-box span:first-of-type {
-                display: none;
-            }
+@media (max-width: 480px) {
+    .pedidos-box span:first-of-type {
+        display: none;
+    }
 
-            .pedidos-box {
-                padding: 15px;
-                border-radius: 8px;
-            }
-        }
+    .pedidos-box {
+        padding: 15px;
+        border-radius: 8px;
+    }
+}
+
+/* Responsividade do canvas */
+#pdf-canvas {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #000;
+    /* preto */
+    color: #fff;
+    text-align: center;
+    padding: 20px 10px;
+    margin-top: 40px;
+    /* espaço dos elementos de cima */
+    font-family: var(--font-family, Arial, sans-serif);
+    /* usa a padrão do projeto */
+    font-size: 14px;
+}
+
+/* Garante que o footer sempre fique ao final da página */
+html,
+body {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+body>footer {
+    margin-top: auto;
+}
+
+/* Responsividade */
+@media (max-width: 600px) {
+    .site-footer {
+        font-size: 12px;
+        padding: 15px 5px;
+    }
+}
