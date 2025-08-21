@@ -330,14 +330,21 @@ body {
     }
 
     .whatsapp-buttons {
+        position: relative;
+        top: 65px;
         right: 15px;
         bottom: 15px;
+        direction: rtl;
     }
 
     .pedidos-box {
+        position: relative;
+        top: 5px;
         left: 15px;
         bottom: 15px;
         padding: 12px 16px;
+        width: 80px;
+        max-width: 120px;
     }
 
     .whatsapp-secondary span {
